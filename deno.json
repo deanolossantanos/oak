@@ -1,8 +1,0 @@
-{
-  "imports": {
-    "elysia": "npm:elysia"
-  },
-  "deploy": {
-    "entrypoint": "main.ts"
-  }
-}
