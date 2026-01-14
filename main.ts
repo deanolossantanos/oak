@@ -1,4 +1,4 @@
-import { Elysia } from "https://deno.land/x/elysia/mod.ts";
+import { Elysia } from "elysia";
 
 const app = new Elysia()
   .get("/", () => "Hello World");
