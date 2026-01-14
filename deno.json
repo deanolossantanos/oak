@@ -1,0 +1,8 @@
+{
+  "tasks": {},
+  "imports": {},
+  "compilerOptions": {},
+  "deploy": {
+    "entrypoint": "main.ts"
+  }
+}
