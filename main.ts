@@ -1,29 +1,9 @@
-import { router } from "https://esm.sh/@hattip/router";
-import { compose } from "https://esm.sh/hattip";
+import { createApp } from "https://deno.land/x/servest/mod.ts";
 
-const routes = router();
+const app = createApp();
 
-// Basic route
-routes.get("/", () => new Response("Hello from Hattip on Deno Deploy!"));
+app.handle("/", (req) => {
+  req.respond({ body: "Hello from Servest!" });
+});
 
-// Example dynamic route
-routes.get("/hello/:name", ({ params }) =>
-  new Response(`Hello ${params.name}`)
-);
-
-// Example JSON API
-routes.get("/api/info", () =>
-  new Response(
-    JSON.stringify({ status: "ok", time: new Date().toISOString() }),
-    { headers: { "Content-Type": "application/json" } }
-  )
-);
-
-// Optional middleware (logging)
-const logger = async (ctx, next) => {
-  console.log("Request:", ctx.request.method, ctx.request.url);
-  return next();
-};
-
-// Export a single fetch handler (required by Deno Deploy)
-export default compose([logger, routes.buildHandler()]);
+export default app.fetch;
